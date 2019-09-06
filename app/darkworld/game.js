@@ -237,8 +237,8 @@ function Child(newData={}){
 	this.genText = function(){
 		this.text = 'Name: ' + this.name + '<br>';
 		this.text += 'Happiness: ' + this.happiness + '<br>';
-		this.text += this.name + " is a " + this.type.pain + " " + this.age + " y old " + this.pron[this.gender].gMale + " " + this.ageTier + ". ";
-		this.text += this.pron[this.gender].gHe + " is "+ this.type.itch + " and very " + this.type.shame + ".<br><br>";
+		this.text += this.name + " is a " + this.type.pain + " " + this.age + " y old " + this.pron[this.gender].Male + " " + this.ageTier + ". ";
+		this.text += this.pron[this.gender].He + " is "+ this.type.itch + " and very " + this.type.shame + ".<br><br>";
 	};
 	this.genText();
 
