@@ -1,0 +1,247 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Dark world</title>
+
+	<link rel="stylesheet" href="layout.css">
+
+	<script language="javascript" src="lz-string.min.js"></script>
+
+	<!-- <script type="text/javascript" src="../../jquery-3.2.1.min.js"></script> -->
+	<!-- <script type="text/javascript" src="decimal.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+</head>
+
+<body>
+	<div style="text-align: center;">
+	<div style="display: inline-block;">
+	<div id="vue" style="display: none;">
+		<div style="text-align:left;">
+			<button class="button" id="buttonOptions" onclick="toggleTab('right','tabOptions')">Options</button>
+		</div>
+
+		<div class="grid-container" id="grid-container">
+
+			<div id="menuPages" class="menuPages" style="display: none; padding:10px;">
+				<!--<button class="button" id="tabLog" onclick="logPageFunct()">Log</button>
+				<button class="button" id="tabResearch" onclick="researchPageFunct()">Research</button>
+				<button class="button" id="tabOptions" onclick="optionsPageFunct()">Options</button>-->
+				<!--<button class="button" id="buttonResources" onclick="toggleTab('tabResources')">Resources</button>
+				<button class="button" id="buttonLog" onclick="toggleTab('tabLog')">Log</button>-->
+				<button class="button" id="buttonExplore" onclick="toggleTab('right','tabExplore')">Explore</button>
+				<button class="button" id="buttonChildren" onclick="toggleTab('right','tabChildren')">Children</button><!-- skills and jobs -->
+				<button class="button" id="buttonResearch" onclick="toggleTab('right','tabResearch')">Research</button>
+				<button class="button" id="buttonCreate" onclick="toggleTab('right','tabCreate')">Build</button>
+				<!--<button class="button" id="buttonDefend" onclick="toggleTab('tabDefend')">Defend</button>
+				<button class="button" id="buttonVortex" onclick="toggleTab('tabVortex')">Vortex</button>-->
+				<!-- <button class="button" id="buttonOptions" onclick="toggleTab('right','tabOptions')">Options</button> -->
+				<hr style="border: 1px dashed white;">
+			</div>
+
+			<div id="tabResources" style="padding:10px;">
+				<div v-for="(value, name) in res.obj">
+				 <div v-if="!value.empty">
+					<div v-if="value.active" class="grid-resource" :id="name" v-bind:style="res.style" :title="value.tooltip">
+						<div class="resValueA" v-bind:style="{color:value.color.name}">{{ name }}:</div>
+						<div v-bind:style="{color:value.color.val}">{{ value.val }} /</div>
+						<div>{{ value.max }}</div>
+						<div v-if="options.passiveGainSec">({{ value.sec | toFixed(2) }}/s)</div>
+						<div v-if="options.activeGainPerc">({{ value.bVal | toFixedPoint(2) }})</div>
+					</div>
+				 </div>
+				 <div v-if="value.empty">
+					 <div class="grid-resource" :id="name" style="display: visible; height:10px"></div>
+				 </div>
+				</div>
+			</div>
+
+			<!-- <div class="tab-log" id="tabLog" style="display: visible; background: #001122; padding:10px;"> -->
+			<div class="tab-log" id="tabLog">
+				<div id="gameLog" title="tooltip" style="color: #ffffff;">{{ log.textObj.n0 }}</div></br>
+				<button class="button" style="display: none;" :disabled='!btn.continue.on' id="buttonContinue" onclick="buttonContinue()">Continue</button>
+				<button class="button" style="display: none;" :disabled='!btn.action.on' id="buttonTime" onclick="buttonAction('time',200,20)">
+					<div class="grid-tech-btn"><div>Count time</div><div></div><div>{{ res.obj.time.bVal | toFixed(0) }} % </div></div>
+				</button>
+				<button class="button" style="display: none;" :disabled='!btn.action.on' id="buttonHug" onclick="buttonAction('happiness',100,5)">
+					<div class="grid-tech-btn"><div>Hug</div><div></div><div>{{ res.obj.happiness.bVal | toFixed(0) }} % </div></div>
+				</button>
+				</br></br></br>
+				<div id="gameLog1" title="tooltip" style="color: #ffffff;"> {{ log.textObj.n1 }}</div></br>
+				<div id="gameLog2" title="tooltip" style="color: rgba(255,255,255,0.8);"> {{ log.textObj.n2 }} </div></br>
+				<div id="gameLog3" title="tooltip" style="color: #888888;"> {{ log.textObj.n3 }} </div></br>
+				<div id="gameLog4" title="tooltip" style="color: #666666;"> {{ log.textObj.n4 }} </div></br>
+				<div id="gameLog5" title="tooltip" style="color: #444444;"> {{ log.textObj.n5 }} </div></br>
+			</div>
+
+
+			<div id="rightTabs" style="display: visible; padding:10px;">
+
+				<transition name="fade">
+
+				<div key=r1 id="tabChildren" v-if="tab.right==='tabChildren'">
+					<div id="textChildren">
+						There are children here. </br></br> They are naughty, but they want to be helpful! Kids love to be helpful. Otherwise, they feel sad.
+					</div>
+					</br>
+
+					<div>
+						Child:
+						<select :key="child.sel.index" v-model="child.sel.data" @change="child.switch(child.sel.id)" style="width: 100px"><option v-for="c in child.obj" v-bind:value="c">{{ c.name }}</option></select>
+					</div>
+					<br>
+
+					<div v-if="child.sel.data != undefined" v-html="child.sel.data.text">
+						{{ child.sel.data.text }}
+					</div>
+
+					<div v-if="child.sel.data != undefined">
+						<span>Current activity: </span>
+						<span>
+							<select @change="child.update()" v-model="child.sel.data.action" style="width: 100px">
+								<option v-for="(value, name) in child.sel.data.actions" v-if="value" v-bind:value="name">{{ name }}</option>
+							</select>
+
+						</span>
+						<div @change="child.update()" v-for="(value, name) in child.sel.data.actions">
+						<input v-if="value" type="radio" id="name" :value="name" v-model="child.sel.data.action">
+						<label v-if="value" for="name">{{ name }}</label>
+						</div>
+					</div>
+
+					<br>
+
+					<div>
+						<div> Activities:</div>
+						<div> Available children: {{ child.sel.free }} / {{ child.sel.len }}</div>
+						<div v-for="(value, name) in activities.obj">
+							<div class="activities">
+								<div>{{ name }} :</div>
+								<input v-model="value.children" @change="activities.parse(name)" placeholder="value.children">
+								<div></div>
+								<button class="activities-button" v-if="name!='resting'" v-on:click="activities.add(name,-1)">-</button>
+								<div></div>
+								<button class="activities-button" v-on:click="activities.add(name,+1)">+</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div key=r2 id="tabResearch" v-else-if="tab.right==='tabResearch'" transition name="fade">
+					<div id="researchText">You don't know yet, you need more time to think...</div></br>
+					<button class="button" :disabled='!btn.action.on' id="btn-thoughts" onclick="buttonAction('thoughts',100,2.5)">
+						<div class="grid-tech-btn"><div>Think</div><div></div><div>{{ res.obj.thoughts.bVal | toFixed(0) }} % </div></div>
+					</button>
+					<button class="button" :disabled='!btn.action.on' id="btn-ideas" onclick="buttonAction('ideas',100,1)">
+						<div class="grid-tech-btn"><div>Analyze</div><div></div><div>{{ res.obj.ideas.bVal | toFixed(0) }} % </div></div>
+					</button>
+					<button class="button" :disabled='!btn.action.on' id="btn-knowledge" onclick="buttonAction('knowledge',100,0.5)">
+						<div class="grid-tech-btn"><div>Learn</div><div></div><div>{{ res.obj.knowledge.bVal | toFixed(0) }} % </div></div>
+					</button>
+				 </br></br>
+					<div>Research:</div>
+					<div v-for="(value, name) in tech">
+						<button class="button" :title="value.tooltip" style="display: visible;" :id="name" v-on:click="buttonTech(name)">
+							<div class="grid-tech-btn"><div>{{ name }}</div><div></div><div>{{value.val}}/{{value.complexity}}</div></div>
+						</button>
+					</div>
+				</div>
+
+				<div key=r3 id="tabCreate" v-else-if="tab.right==='tabCreate'">
+					<div id="textCreate">
+						You don't know yet, you need to do some research...
+						</br></br>
+						<button class="button" :disabled='!btn.action.on' id="buttonThoughts" onclick="buttonAction('invention',100,2.5)">
+							<div class="grid-tech-btn"><div>Invent</div><div></div><div>{{ res.obj.invention.bVal | toFixed(0) }} % </div></div>
+						</button>
+						<button class="button" :disabled='!btn.action.on' id="buttonIdeas" onclick="buttonAction('ideas',100,1)">
+							<div class="grid-tech-btn"><div>Blueprint</div><div></div><div>{{ res.obj.ideas.bVal | toFixed(0) }} % </div></div>
+						</button>
+						<button class="button" :disabled='!btn.action.on' id="buttonKnowledge" onclick="buttonAction('inventions',100,0.5)">
+							<div class="grid-tech-btn"><div>Prototype</div><div></div><div>{{ res.obj.invention.bVal | toFixed(0) }} % </div></div>
+						</button>
+					</div>
+
+					<br>
+
+					<button class="button" id="tabBuild" style="border: 1px none #00ddff; width:auto;" onclick="toggleTab('right1','tabBuild')">Build tab</button> |
+					<button class="button" id="tabCraft" style="border: 1px none #00ddff; width:auto;" onclick="toggleTab('right1','tabCraft')">Craft tab</button>
+					<hr>
+					<br>
+						<div key=ra1 id="tabBuild" v-if="tab.right1==='tabBuild'">
+							<div>Build
+								<div v-for="(value, name) in build.obj">
+									<button class="button" :title="value.tooltip" style="display: visible; width:200px;" :id="name" v-on:click="build.build(name)">
+										<div class="grid-tech-btn">
+											<div>{{ name }}: {{value.val}}</div>
+											<div></div>
+											<div>{{ value.cost }}</div>
+										</div>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div key=ra2 id="tabCraft" v-if="tab.right1==='tabCraft'">
+							<div>Craft</div>
+						</div>
+				</div>
+
+				<div key=r4 id="tabExplore" v-else-if="tab.right==='tabExplore'">
+					<div id="resourceSettlement" style="display:visible;">Place: {{ resSpecial.settlement.type }}</div></br>
+					<div id="textExplore">Dark, cool and moist. There is moss but you can barely see...</div><br>
+					<div style="display:grid; grid-template-columns: auto auto;">
+						<div id="map" style="letter-spacing: 8px; width: min-cont" v-html="explore.map.str">{{explore.map.str}}</div>
+						<div class="map-controls">
+							<div></div>
+							<div><button v-on:click="explore.movePlayer(-1,0)">U</button></div>
+							<div></div>
+							<div><button v-on:click="explore.movePlayer(0,-1)">L</button></div>
+							<div></div>
+							<div><button v-on:click="explore.movePlayer(0,+1)">R</button></div>
+							<div></div>
+							<div><button v-on:click="explore.movePlayer(1,0)">D</button></div>
+							<div></div>
+						</div>
+					</div>
+				</div>
+
+				<div key=r5 id="tabDefend" v-else-if="tab.right==='tabDefend'"><div id="textDefend">Defend... but from what?</div></div>
+
+				<div key=r6 id="tabVortex" v-else-if="tab.right==='tabVortex'"><div id="textVortex">The vortext twists and turns, your head hurts.</div></div>
+
+				<div key=r7 id="tabOptions" v-else-if="tab.right==='tabOptions'">
+					<div id="optionsText">You don't have any options yet...</div></br>
+					<input type="checkbox" id="checkbox" v-model="options.passiveGainSec">
+						<label for="checkbox">show passive gain/sec: {{ options.passiveGainSec }}</label>
+					</input>
+					</br>
+					<input type="checkbox" id="checkbox" v-model="options.activeGainPerc">
+						<label for="checkbox">show active gain %: {{ options.activeGainPerc }}</label>
+					</input>
+					</br></br>
+					<div>Export/import game</div>
+					<button class="button" id="buttonExport" onclick="save.save()">Export game</button>
+					<button class="button" id="buttonImport" onclick="save.load()">Import game</button>
+					</br></br>
+					<textarea class="text-area" v-model="saveFileText" placeholder="insert data" rows="6" cols="40"></textarea>
+				</div>
+
+				</transition>
+
+			</div>
+		</div>
+		<!-- <div id="clipboard">this is a clipboard</div> -->
+	</div>
+	</div>
+	</div>
+
+	<!-- <script type="text/javascript" src="vue.min.js"></script> -->
+	<!-- <script src="../../vue.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script type="text/javascript" src="game.js"></script>
+
+</body>
+</html>

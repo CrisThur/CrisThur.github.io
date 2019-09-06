@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'bitstream_vera_sans_monoroman';
+    src: url('VeraMono-webfont.eot');
+    src: url('VeraMono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('VeraMono-webfont.woff') format('woff'),
+         url('VeraMono-webfont.ttf') format('truetype'),
+         url('VeraMono-webfont.svg#bitstream_vera_sans_monoroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+	margin:10;
+  font-size: 14;
+	/*line-height: 200%;*/
+	/*font-family:Segoe UI;*/
+	/*font-family: 'bitstream_vera_sans_monoroman', Arial;*/
+	font-family: 'bitstream_vera_sans_monoroman', Segoe UI, Arial;
+	color: #ffffff;
+  background-color: #000000;
+}
+
+ul {list-style-type: none;}
+
+
+.button {
+  width: 120px; height: 20px; text-align: left;
+  background-color: #000000; color: white; border-radius: 4px;
+  border: 1px solid #00ddff;
+}
+.button:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+.button:disabled { color: #00ddff; }
+.button:hover { background-color: #004488; color: white; }
+.button[disabled]:hover { background-color: #000000; color: #00ddff; }
+
+
+.text-area {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
+.grid-container {
+  display: grid;
+	/* grid-auto-columns: minmax(390px, min-content) minmax(390px, min-content) minmax(390px, min-content); */
+  grid-auto-columns: 390px 390px 390px;
+	grid-auto-rows: auto;
+  grid-gap: 10px 20px;
+  /*background-color: #2196F3;*/
+  padding: 10px;
+	text-align: left;
+  width: 1230px;
+}
+
+.menuPages {
+  grid-column: 1/ span 3;
+	grid-row: 1 / span 1;
+	width: 1230px;
+}
+
+.tab-log {
+  display: visible;
+  /* background: #001122;  */
+  padding:10px;
+  background-image: linear-gradient(#001122, #000000);
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+.fade-leave-active {
+  transition: opacity .0s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+#tabResources { width: 380px; }
+#tabLog { width: 380px; }
+#rightTabs{ width: 380px; }
+
+.grid-resource{
+  display: grid;
+  grid-template-columns: 80px 80px 60px 80px 70px;
+  grid-gap: 5px;
+  text-align: right;
+}
+.resValueA { text-align: left}
+
+.grid-tech-btn{
+  display: grid; grid-template-columns: auto 1fr auto; grid-gap: 5px; text-align: right;
+}
+
+.activities {
+  display: grid; grid-template-columns: 100px 40px 5px min-content 5px min-content;
+  grid-template-rows: 18px;
+  text-align: left;
+}
+.activities-button {
+  width: 40px; height: 18px; text-align: center;
+  background-color: #000000; color: white; border-radius: 4px;
+  border: 1px solid #00ddff;
+}
+.activities-button:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+.activities-button:disabled { color: #00ddff; }
+.activities-button:hover { background-color: #004488; color: white; }
+.activities-button[disabled]:hover { background-color: #000000; color: #00ddff; }
+
+.map-controls {
+    display: grid;
+    grid-template-columns: 30px 30px 30px;
+    grid-template-rows: 30px 30px 30px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    /* background-color: #00aaff; */
+    /* justify-items: stretch; */
+    width:100px;
+ }
+ .map-controls button {
+   width: 30px; height: 30px; text-align: center;
+   background-color: #000000; color: white; border-radius: 4px;
+   border: 1px solid #00ddff;
+ }
+ .map-controls button:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+ .map-controls button:disabled { color: #00ddff; }
+ .map-controls button:hover { background-color: #004488; color: white; }
+ .map-controls button[disabled]:hover { background-color: #000000; color: #00ddff; }
+
+
+#clipboard{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	background-color: gray;
+	min-width: 300px;
+	min-height: 200px;
+	padding: 10px 10px 10px 10px;
+}​
+
+.ui-widget-header {
+	/*background: #cedc98;*/
+	background: #black;
+	border: 1px solid #DDDDDD;
+	color: #333333;
+	font-weight: bold;
+}

@@ -1,0 +1,56 @@
+@font-face{
+	font-family: DejaVu Sans Mono;
+	src: url('DejaVuSansMono.ttf'), url('DejaVuSansMono.tff') format('tff');
+}
+
+body {
+	/* background-color: #2196F3; */
+	background-color: rgba(50, 155, 205, 1.0);
+}
+
+body, h1, h2, button{
+    text-align:center;
+    font-family: 'DejaVu Sans Mono', monospace;
+	font-size: 12px;
+	font-align: left;
+	/* background-color: #2196F3; */
+}
+
+p{
+	font-size: 10px;
+	margin: 2px;
+	padding: 4px;
+}
+
+.info{
+	background-color: #ffffff;
+}
+
+.grid-container {
+  display: grid;
+  /* grid-template-columns: auto 420 420; */
+	grid-auto-columns: min-content;
+	grid-template-rows: 420px auto;
+	/* grid-auto-rows: min-content; */
+  grid-gap: 10px;
+  /* background-color: #2196F3; */
+  padding: 10px;
+	text-align: left;
+}
+
+.grid-container > div {
+  background-color: rgba(150, 255, 255, 0.8);
+  align-items: left;
+  padding: 0px 0;
+  font-size: 14px;
+}
+
+.item3 {
+  grid-column: 3 / span 1;
+	grid-row: 1 / span 2;
+	width: 420px;
+}
+
+.item4 {
+  grid-column: 1 / span 2;
+}

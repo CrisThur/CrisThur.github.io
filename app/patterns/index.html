@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<body style="background-color: #000000; text-align:center;">
+
+	<div style="text-align: center; padding: 10px; color:white;">
+		<div style="display: inline-block;">
+			<div style="display: grid; grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto; text-align:left; width:400px;">
+				<div>Points:</div>
+				<button onClick="minus()">-</button>
+				<button onClick="plus()">+</button>
+				<div></div>
+				<div>Type:</div>
+				<button onClick="setPattern(1)">1</button>
+				<button onClick="setPattern(2)">2</button>
+				<button onClick="setPattern(3)">3</button>
+				<button onClick="setPattern(4)">4</button>
+				<button onClick="setPattern(5)">5</button>
+				<button onClick="setPattern(6)">6</button>
+			</div>
+		</div>
+		<br><br><br>
+
+		<canvas id="myCanvas" width="400" height="400" style="border:0px solid #d3d3d3;">
+		Your browser does not support the HTML5 canvas tag.</canvas>
+
+	</div>
+
+<script type="text/javascript" src="patterns.js"></script>
+
+</body>
+</html>

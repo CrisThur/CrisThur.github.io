@@ -1,0 +1,240 @@
+/* @font-face {
+    font-family: 'bitstream_vera_sans_monoroman';
+    src: url('VeraMono-webfont.eot');
+    src: url('VeraMono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('VeraMono-webfont.woff') format('woff'),
+         url('VeraMono-webfont.ttf') format('truetype'),
+         url('VeraMono-webfont.svg#bitstream_vera_sans_monoroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+
+body {
+	margin:10;
+  font-size: 14;
+	font-family: 'bitstream_vera_sans_monoroman', Segoe UI, Arial;
+	color: #ffffff;
+  background-color: #000000;
+  overflow-y:scroll;
+}
+
+ul {list-style-type: none;}
+
+
+a:link {
+  text-decoration: none;
+  color: cyan;
+}
+
+a:visited {
+  text-decoration: none;
+  color: cyan;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+a:active {
+  text-decoration: none;
+  color: cyan;
+}
+
+
+.vue {
+  border: 1px solid #00ddff;
+  border-bottom: 0px solid red;
+  text-align: left;
+}
+
+.div {
+  text-align: left;
+}
+
+.button {
+  width: 120px; height: 20px; text-align: left;
+  background-color: #000000; color: white; border-radius: 4px;
+  border: 1px solid #00ddff;
+}
+.button:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+.button:disabled { color: #00ddff; }
+.button:hover { background-color: #004488; color: white; }
+.button[disabled]:hover { background-color: #000000; color: #00ddff; }
+
+.button-borderless {
+  height: 20px; text-align: left;
+  background-color: #000000; color: white; border-radius: 4px;
+  border: 1px none #00ddff; width:auto;
+}
+.button-borderless:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+.button-borderless:disabled { color: #00ddff; }
+.button-borderless:hover { background-color: #004488; color: white; }
+.button-borderless[disabled]:hover { background-color: #000000; color: #00ddff; }
+
+.text-area { background-color: #000000; color: #ffffff; }
+
+.grid-main {
+    display: grid;
+    grid-auto-columns: min-content auto;
+    grid-auto-rows: auto max-content auto;
+    grid-gap: 10px 0px;
+    padding: 20px;
+    width: 	700px;
+}
+
+.top {
+  grid-column: 1/ span 2;
+  grid-row: 1 / span 1;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #00ddff;
+  /* font-size: 28; */
+}
+.menu {
+  grid-column: 1/ span 1;
+  grid-row: 2 / span 1;
+  text-align: left;
+  background-image: linear-gradient(#002244, #001122);
+  padding: 20px;
+  border: 1px solid #00ddff;
+  /* border: 1px solid #fff; */
+}
+.page {
+  grid-column: 2/ span 1;
+  grid-row: 2 / span 1;
+  text-align: left;
+  background-color: #001122;
+  padding: 20px;
+  border: 1px solid #00ddff;
+ }
+.bottom {
+  text-align: center;
+  grid-column: 1/ span 2;
+  grid-row: 3 / span 1;
+  padding: 20px;
+}
+
+.grid-mainb {
+  display: grid;
+	/* grid-auto-columns: minmax(390px, min-content) minmax(390px, min-content) minmax(390px, min-content); */
+  grid-auto-columns: 500px 500px;
+	grid-auto-rows: auto;
+  grid-gap: 10px 20px;
+  /*background-color: #2196F3;*/
+  padding: 10px;
+	text-align: left;
+  /* width: 1040px; */
+}
+
+.left {
+  display: visible;
+  padding:10px;
+  background-image: linear-gradient(#002244, #000000);
+}
+
+.fade-enter-active { transition: opacity 0.5s; }
+.fade-leave-active { transition: opacity .0s; }
+.fade-enter, .fade-leave-to  { opacity: 0; } /* .fade-leave-active below version 2.1.8 */
+
+.map-controls {
+    display: grid;
+    grid-template-columns: 30px 30px 30px;
+    grid-template-rows: 30px 30px 30px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    width:100px;
+ }
+
+ .map-controls button {
+   width: 30px; height: 30px; text-align: center;
+   background-color: #000000; color: white; border-radius: 4px;
+   border: 1px solid #00ddff;
+ }
+ .map-controls button:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+ .map-controls button:disabled { color: #00ddff; }
+ .map-controls button:hover { background-color: #004488; color: white; }
+ .map-controls button[disabled]:hover { background-color: #000000; color: #00ddff; }
+
+
+#clipboard{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	background-color: gray;
+	min-width: 300px;
+	min-height: 200px;
+	padding: 10px 10px 10px 10px;
+}​
+
+.ui-widget-header {
+	/*background: #cedc98;*/
+	background: #black;
+	border: 1px solid #DDDDDD;
+	color: #333333;
+	font-weight: bold;
+}
+
+
+/* .button {
+  width: 120px; height: 20px; text-align: left;
+  background-color: #000000; color: white; border-radius: 4px;
+  border: 1px solid #00ddff;
+}
+.button:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+.button:disabled { color: #00ddff; }
+.button:hover { background-color: #004488; color: white; }
+.button[disabled]:hover { background-color: #000000; color: #00ddff; } */
+
+/* Dropdown Button */
+.dropbtn {
+  width: 120px; height: 20px; text-align: center;
+  background-color: #000000; color: white; border-radius: 4px;
+  border: 1px solid #00ddff;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  /* background-color: #f1f1f1; */
+  background-color: #000000;
+  color: white;
+  min-width: 118px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 1px solid #00ddff;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 4px 16px;
+  text-decoration: none;
+  display: block;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid #00ddff;
+  font-size: 12;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #004488; color: white; }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #004488;}
+
+.dropdown:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+
+.dropdown:focus .dropdown-content { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }

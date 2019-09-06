@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styles.css">
+	<title>Neko world editor</title>
+
+	<script src="lz-string.js"></script>
+
+</head>
+
+<body>
+<div style="display: inline-block;">
+
+	<div style="text-align: left; background-color: rgba(150, 255, 255, 0.8); margin: 10px; padding: 10px; font-size: 20px;">Multi depth world map editor by Chris Z.</div>
+
+	<div style="text-align: left; background-color: rgba(150, 255, 255, 0.8); margin: 10px; padding: 10px;">
+	World map editor with multiple layers of depth. Made by Christoph Z.<br>
+	* select type of tile and paint on map<br>
+	* once a tile on the map is selected, use + to zoom in and paint deeper details, use - to unzoom<br>
+	* tiles which were edited are marked with a red dot. pressing x will clear the selected tile of all details<br>
+	</div>
+
+	<div class="grid-container">
+		<div class="item1" style="padding: 10px;">
+			<p id="terrainMenu" style="border:5px; margin:2px;">
+				<p id="terrainType" style="border:5px; margin:2px; padding: 4px; background-color:white; text-align: left; font-size: 12px;">Selected:</p>
+			</br>
+				<button id="layerMinus" onClick="map.layerMinus()">-</button>
+				<button id="layerPlus" onClick="map.layerPlus()">+</button>
+				<button id="mapSave" onClick="map.save()">save</button>
+				<button id="mapLoad" onClick="map.load()">load</button>
+				<button id="deleteSubtiles" onClick="map.clearSubtiles()">x</button>
+			</br></br>
+				<p id="terrainButtons" style="margin: 0; padding: 0;"></p>
+			</p>
+		</div>
+
+		<div class="item2"><canvas id="myCanvas" width="420" height="420" style="border:1px solid #ffffff"></canvas></div>
+
+		<div class="item4">
+			<div style ="display: grid; grid-template-columns: auto auto; text-align: left">
+				<textarea id="textArea" rows="4" cols="50" type="text" id="myText"></textarea>
+				<button onclick="saveElementText()" style="width: 120px; height: 20px;">Edit tile info</button>
+			</div>
+		</div>
+
+		<div class="item3">
+			<p id="layerDepth" class="info">Layer 0, tile 10 km</p>
+			<p id="tileData" class="info"></p>
+			<p id="tileInfo" class="info"></p>
+		</div>	
+	</div>
+
+</div>
+
+<script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>

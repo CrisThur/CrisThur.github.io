@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Body weight calculator</title>
+	<link rel="stylesheet" href="layout.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+
+<body style="background-color: #000000; text-align: center">
+
+	<div id="vue" style="padding: 10px; color:white; display: inline-block;">
+		<div id="main" style="display: none; width: 740px; text-align: left;">
+
+			<div style="font-size: 20px">Creature height-to-weight calculator</div>
+			<br>
+
+			<div>
+				The following is a height to weight calculator for humanoids (bipeds). It uses power of 2.5 as a scaling base for more accuracy. Usually, weight calculators, including BMI, are based on scaling by power of 2, this is highly inaccurate, and more so when the height is very small or very large, because it assumes that volume of living organisms scales in only 2 dimensions.
+			</div>
+			<br>
+
+			<div>
+				However, I have seen people in internet discussions assume that volumetric scaling by a power of 3 is accurate, that is also not the case. Volume of living organisms doesn't scale the same way in all three dimensions with increase in height. An accurate value seems to be around 2.5 - 2.7 (this calculator uses 2.5).
+			</div>
+			<br>
+
+			<div>
+				To calculate the weight of your creature, input height in meters, you will get a result in kg.
+			</div>
+			<br>
+
+
+			<div>
+				<input v-model="entity.stat.height" placeholder="height in meters"></input>
+				<button class="button" v-on:click="entity.genWeight()">confirm</button>
+			</div>
+			<br>
+
+			<div>
+				Weight: {{ entity.stat.weight | toFixed(3) }} kg
+			</div>
+
+		</div>
+	</div>
+
+	<!-- <script src="vue.min.js"></script> -->
+	<!-- <script src="../../vue.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+</body>
+
+</html>
