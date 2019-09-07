@@ -12,11 +12,12 @@
 
 <body>
 	<div id="vue" class="vue">
-		<div class="grid">
+		<div class="main-fade">
+			<div class="grid">
 				<div class="top">
 					<div style="font-size: 20px;">Land of Chris</div>
-					<hr style="border: 1px dashed white;">
-					<div><button v-for="(value, name) in page.obj" class="button" v-on:click="page.set(name)" style="width: 80px; text-align: center;">{{value.name}}</button></div>
+					<hr>
+					<div><button v-for="(value, name) in page.obj" class="button" v-on:click="page.set(name)">{{value.name}}</button></div>
 				</div>
 
 				<div class="page">
@@ -33,9 +34,9 @@
 					</div>
 
 					<div v-show="page.name=='graphic'">
-						<div v-for="(value,name) in page.img">
+						<div v-for="(value, name) in page.img">
 							{{ name }} <br>
-							<a class="test-popup-link" v-for="(value2, name2) in value" :href="'graphic/'+name+'/'+name2+'.png'" target="_blank"><img :src="'graphic/'+name+'/'+name2+'.jpg'" alt="continent map" style="margin: 5px;"></a>
+							<a class="test-popup-link" v-for="name2 in value" :href="'graphic/'+name+'/'+name2+'.png'" target="_blank"><img :src="'graphic/'+name+'/'+name2+'.jpg'" alt="continent map" style="margin: 5px;"></a>
 							<br>
 						</div>
 					</div>
@@ -46,18 +47,15 @@
 				</div>
 
 				<div class="bottom">Created by Krzysztof Zajaczkowski 2019. Personal portfolio. Contact at <a href="mailto:christoph.bunny@gmail.com">christoph.bunny@gmail.com</a> </div>
-
-		 </div>
+			</div>
+		</div>
 	</div>
-
 
 		<div id="myModal" class="modal">
 			<span class="close"></span>
 			<img class="modal-content" id="img01">
 			<div id="caption"></div>
 		</div>
-
-
 
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 	<script src="vue.min.js"></script>

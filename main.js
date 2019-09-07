@@ -47,40 +47,11 @@ var vue = new Vue({
         other : new Page('Other',['Everything else. I don\'t know what to put here yet.'])
       },
       img : {
-        illustration : {
-          drawing001ad : 'img',
-          painting001b : 'img',
-          ver3e3_mix : 'img',
-          cutescene241 : 'img',
-          bg001dv2 : 'img',
-          desolated_landscape001d : 'img',
-        },
-        expression : {
-          abstract1973a : 'img',
-          abstract1974 : 'img',
-          abstract1977 : 'img',
-          abstract1980 : 'img',
-          freeform2253s : 'img',
-          freeform2089 : 'img',
-        },
-        vector : {
-          rpgicons : 'img',
-          christmass : 'img',
-          magic : 'img',
-        },
-        pixel : {
-          continentMap1a : 'continentMap1a',
-          hexTilesetC: 'hexTilesetC',
-          Untitled124234c: 'Untitled124234c',
-        },
-        sculpture : {
-          sc001 : 'continentMap1a',
-          sc002 : 'hexTilesetC',
-          sc003 : 'Untitled124234c',
-          sc004 : 'continentMap1a',
-          sc005 : 'hexTilesetC',
-          sc006 : 'Untitled124234c',
-        },
+        illustration : ['drawing001ad', 'painting001b', 'ver3e3_mix', 'cutescene241', 'bg001dv2', 'desolated_landscape001d'],
+        expression : ['abstract1973a', 'abstract1974', 'abstract1977', 'abstract1980', 'freeform2253s', 'freeform2089'],
+        vector : ['rpgicons', 'christmass', 'magic'],
+        pixel : ['continentMap1a','hexTilesetC','Untitled124234c'],
+        sculpture : ['sc001', 'sc002', 'sc003', 'sc004', 'sc005', 'sc006'],
       }
     },
   },
@@ -92,4 +63,4 @@ $('.test-popup-link').magnificPopup({
   // other options
 });
 
-$("#main").fadeIn(1000);
+$(".main-fade").fadeIn(1000);

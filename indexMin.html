@@ -1,0 +1,207 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Portfolio</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<style>
+		@font-face {
+		    font-family: 'bitstream_vera_sans_monoroman';
+		    src: url('VeraMono-webfont.eot');
+		    src: url('VeraMono-webfont.eot?#iefix') format('embedded-opentype'),
+		         url('VeraMono-webfont.woff') format('woff'),
+		         url('VeraMono-webfont.ttf') format('truetype'),
+		         url('VeraMono-webfont.svg#bitstream_vera_sans_monoroman') format('svg');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+
+		body {
+			margin:10;
+		  font-size: 14;
+			font-family: 'bitstream_vera_sans_monoroman', Segoe UI, Arial;
+			color: #ffffff;
+		  background-color: #000000;
+		  overflow-y:scroll;
+		  text-align: center;
+		}
+
+		ul { list-style-type: none; }
+
+		hr { border: 1px dashed white; }
+
+		a:link { text-decoration: none; color: cyan; }
+		a:visited { text-decoration: none; color: cyan; }
+		a:hover { text-decoration: none; color: white; }
+		a:active { text-decoration: none; color: cyan; }
+
+
+		.title {
+		  font-size: 20px;
+		}
+
+		.main-fade { display: none; }
+
+		.main {
+		  display: inline-block;
+		  border: 1px solid #00ddff;
+		  border-bottom: 0px solid red;
+		  background-image: linear-gradient(#002244, #000000);
+		  margin: auto;
+		}
+
+		.grid {
+		  display: grid;
+		  grid-auto-columns: auto;
+		  grid-auto-rows: auto max-content auto;
+
+		  grid-gap: 10px 5px;
+		  padding: 20px;
+		  max-width: 740px;
+		  min-width: 432px;
+		  width: 1fr;
+
+		  text-align: center;
+		}
+
+		.text-area { background-color: #000000; color: #ffffff; }
+
+		.grid > div {
+		  padding: 20px;
+		}
+
+		.top {
+		  grid-row: 1 / span 1;
+		  text-align: center;
+		  border: 1px solid #00ddff;
+		}
+
+		.page {
+		  grid-row: 2 / span 1;
+		  text-align: left;
+		  background-color: #001122;
+		  border: 1px solid #00ddff;
+		 }
+		.bottom {
+		  grid-row: 3 / span 1;
+		  text-align: center;
+		}
+
+		.button {
+		  width: 80px; height: 20px; text-align: center;
+		  background-color: #000000; color: white; border-radius: 4px;
+		  border: 1px solid #00ddff;
+		}
+		.button:focus { box-shadow: 0 0px 16px 0 rgba(0,200,255,0.8), 0 0px 20px 0 rgba(0,200,255,0.6); }
+		.button:disabled { color: #00ddff; }
+		.button:hover { background-color: #004488; color: white; }
+		.button[disabled]:hover { background-color: #000000; color: #00ddff; }
+	</style>
+</head>
+
+<body>
+	<div class="main">
+		<div class="grid">
+			<div class="top">
+				<div class="title">Land of Chris</div>
+				<hr>
+				<div class="menu"></div>
+			</div>
+
+			<div class="page"></div>
+
+			<div class="bottom"></div>
+
+		</div>
+	</div>
+
+
+<script>
+	function Page(name='empty',textArr=[]){
+	  this.name = name;
+	  this.textArr = textArr;
+	  this.text = '';
+	  for (a in this.textArr) this.text += this.textArr[a] + '<br><br>';
+	}
+
+	var data = {
+	  page : {
+	    blog : new Page(
+	      'Blog',[
+	        'News are listed here',
+	        '2019-09-04: Expanded more categories, enhanced the design',
+	        '2019-09-02: Worked on menus and filled out categories.',
+	        '2019-09-01: Started the project.',
+	    ]),
+	    about : new Page('About',[
+	      'Warm welcome to my modest website. I am a freelance artist and creator. For as long as I can remember I\'ve been interested in a variety of things, from <b>painting</b>, to <b>writing</b>, to <b>music and coding</b>.',
+	      'I specialize in digital art, mainly 2d illustrations, photoediting, UI design, and, to a lesser degee, animation and 3d. I\'m fairly interested in foreign langauges and I\'m a hobbyist fiction writer. <b>My native language is Polish</b>, but I am <b>profficient with English</b> and know <b>some German and Japanese.</b>',
+	      'My active vocabulary in German and Japanese is very rusty. My passive undestanding of spoken German is fairly good, Japanese less so.',
+	      'Programing is my other hobby. I have dabbled a little into a range of programing langauges, mainly <b>python and javascript</b>, and to a lesser degree ruby and c#.',
+	      'I worked with a wide range of tools, including: photoshop, indesign, corel, gimp, inkscape, blender, audacity, LMMS, microsoft office and libre office, and many other tools, with a preference for open source.',
+	      'I mainly use Windows, but I also used MacOS and Linux in the past, and have a rudimentary understanding of both.'
+	    ]),
+	    apps : new Page(
+	      'Apps',[
+	        'A list of scripts and apps',
+	        '<a href="app/patterns/index.html" target="_blank">Patterns</a> - a script drawing different patterns on canvas.',
+	        '<a href="app/weightcalc/index.html" target="_blank">Weight calculator</a> - calculate weight of creatures based on height, uses a more accurate power of 2.5.',
+	        '<a href="app/worldmapper/index.html" target="_blank">World map</a> - a tile-based map editor with multiple layers of depth.',
+	        '<a href="app/darkworld/index.html" target="_blank">Dark World</a> - an idle game project with vue.',
+	        '<a href="https://github.com/CrisThur/CrisThur.github.io/tree/master/scripts" target="_blank">Simple scripts</a> - a python script which generates some simple math equations, and some scripts testing ruby and cpp</a>',
+	      ]),
+	    graphic : new Page('Graphic',['A choice of arts']),
+	    notes : new Page(
+	      'Notes',[
+	        'The world can still be better, we need to make it better.',
+	        'Below I present a list of some of the tools I worked with. It is by no means a complete list, but it is a lot of tools, and while I used some extensively, I used others in a very limited amount:',
+	        'Graphic/2d bitmap: photoshop, krita, gimp, sai, open canvas, photoimpact, corel, painter, paint shop pro',
+	        'Graphic/2d vector: inkscape, indesign',
+	        'Graphic 3d: blender',
+	        'Video: OBS studio, flash, Adobe After Effects',
+	        'Audio: audacity, LMMS, sunVox',
+	        'Game engines/visual environments: unity, rpg maker, renpy',
+	        'Text tools: microsoft office, open office/libre office, jedit, atom, editra, notepad++',
+	        'Programing langauges: javascript, python, ruby, c#, haxe',
+	        'html related: html, CSS, jQuerry, vue'
+	    ]),
+	    links : new Page('Links',['Links to interesting places','<a href="https://www.youtube.com/channel/UCmWpIboB0bnVYYcFZzYNORg/featured" target="_blank">Youtube channel (gaming)</a>']),
+	    other : new Page('Other',['Everything else. I don\'t know what to put here yet.'])
+	  },
+	  img : {
+	    illustration : ['drawing001ad', 'painting001b', 'ver3e3_mix', 'cutescene241', 'bg001dv2', 'desolated_landscape001d'],
+	    expression : ['abstract1973a', 'abstract1974', 'abstract1977', 'abstract1980', 'freeform2253s', 'freeform2089'],
+	    vector : ['rpgicons', 'christmass', 'magic'],
+	    pixel : ['continentMap1a','hexTilesetC','Untitled124234c'],
+	    sculpture : ['sc001', 'sc002', 'sc003', 'sc004', 'sc005', 'sc006'],
+	  }
+	};
+
+	function setMenu(){
+	  let h = '';
+	  for (b in data.page) h += `<button class="button" onClick="setPage('${data.page[b].name.toLowerCase()}')">${data.page[b].name}</button>`;
+	  $(".menu").html(h);
+	}
+	setMenu();
+
+	function setPage(p) {
+	  if (p == 'graphic') {
+	    let h = 'A mix of visual arts:<br><br>';
+	    for (type in data.img) {
+	      h += `<br>${type}<br>`;
+	      for (i in data.img[type]) { h += `<a href="graphic/${type}/${data.img[type][i]}.png" target="_blank"><img src="graphic/${type}/${data.img[type][i]}.jpg" style="margin: 5px;"></a>` }
+	    }
+	    $(".page").html(h);
+	  }
+	  else { $(".page").html(data.page[p].text); };
+
+	};
+
+	setPage('blog');
+
+	$(".bottom").html(`Created by Krzysztof Zajaczkowski 2019. Personal portfolio. Contact at <a href="mailto:christoph.bunny@gmail.com">christoph.bunny@gmail.com</a>`)
+</script>
+
+</body>
+</html>
