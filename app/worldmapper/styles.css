@@ -4,16 +4,13 @@
 }
 
 body {
-	/* background-color: #2196F3; */
 	background-color: rgba(50, 155, 205, 1.0);
 }
 
 body, h1, h2, button{
-    text-align:center;
+    text-align: left;
     font-family: 'DejaVu Sans Mono', monospace;
 	font-size: 12px;
-	font-align: left;
-	/* background-color: #2196F3; */
 }
 
 p{
@@ -28,12 +25,9 @@ p{
 
 .grid-container {
   display: grid;
-  /* grid-template-columns: auto 420 420; */
 	grid-auto-columns: min-content;
 	grid-template-rows: 420px auto;
-	/* grid-auto-rows: min-content; */
   grid-gap: 10px;
-  /* background-color: #2196F3; */
   padding: 10px;
 	text-align: left;
 }

@@ -11,35 +11,18 @@
 </head>
 
 <body>
-	<div id="main" style="text-align: center; padding: 10px; color:white; display: none">
-
-		<div id="vue" class="vue" style="display: inline-block; background-image: linear-gradient(#002244, #000000); width: 740px; height: 100vh">
-			<!-- <a class="test-popup-link" href="graphic/pixel/continentMap1a.png">Open popup</a> -->
-			<div class="grid-main">
-
+	<div id="vue" class="vue">
+		<div class="grid">
 				<div class="top">
 					<div style="font-size: 20px;">Land of Chris</div>
 					<hr style="border: 1px dashed white;">
-
-					<div>
-							<button v-for="(value, name) in page.obj" class="button" v-on:click="page.set(name)" style="width: 80px; text-align: center;">{{value.name}}</button>
-
-					</div>
-
-				</div>
-
-				<div class="menu" style="display: none;">
-					<div v-for="(value, name) in page.obj">
-						<button class="button" v-on:click="page.set(name)">{{value.name}}</button>
-					</div>
+					<div><button v-for="(value, name) in page.obj" class="button" v-on:click="page.set(name)" style="width: 80px; text-align: center;">{{value.name}}</button></div>
 				</div>
 
 				<div class="page">
 					<div v-for="item in page.obj[page.name].textArr">
 						<div v-html="item"></div><br>
 					</div>
-
-					<!-- <transition name="fade"> -->
 
 					<div v-show="page.name=='apps'">
 							<a href="app/patterns/index.html" target="_blank">Patterns</a> - a script drawing different patterns on canvas.<br><br>
@@ -60,34 +43,25 @@
 					<div v-show="page.name=='links'">
 						<a href="https://www.youtube.com/channel/UCmWpIboB0bnVYYcFZzYNORg/featured" target="_blank">Youtube channel (gaming)</a>
 					</div>
-
-					<!-- </transition> -->
 				</div>
 
-				<div class="bottom">Created by Krzysztof Zajaczkowski 2019. Contact at <a href="mailto:christoph.bunny@gmail.com">christoph.bunny@gmail.com</a> </div>
+				<div class="bottom">Created by Krzysztof Zajaczkowski 2019. Personal portfolio. Contact at <a href="mailto:christoph.bunny@gmail.com">christoph.bunny@gmail.com</a> </div>
 
-				<div></div>
-							<!-- The Modal -->
-		</div>
+		 </div>
+	</div>
 
 
 		<div id="myModal" class="modal">
-			<!-- The Close Button -->
 			<span class="close"></span>
-			<!-- Modal Content (The Image) -->
 			<img class="modal-content" id="img01">
-			<!-- Modal Caption (Image Text) -->
 			<div id="caption"></div>
 		</div>
 
-
-	</div>
 
 
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<!-- <script src="vue.min.js"></script> -->
 	<script src="magnific.min.js"></script>
-	<!-- <script src="bootstrap.min.js"></script> -->
 	<script src="main.js"></script>
 
 </body>
